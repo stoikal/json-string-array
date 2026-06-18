@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON String Array</title>
+</head>
+<body>
+    <form>
+        <textarea id="input" rows="10" cols="50" placeholder='Enter a JSON array, e.g. ["key1=value1","key2=value2"]'></textarea><br>
+        <button type="button" onclick="processInput()">Process</button><br>
+        <textarea disabled="" id="output" rows="10" cols="50" placeholder="Processed output will appear here"></textarea><br>
+        <button type="button" onclick="clearOutput()">Copy</button>
+    </form>
+    
+    <script>
+        function processInput() {
+            var raw = document.getElementById('input').value.trim();
+            var arr = JSON.parse(raw);
+            document.getElementById('output').value = arr.join(';');
+        }
+        function clearOutput() {
+            var out = document.getElementById('output');
+            navigator.clipboard.writeText(out.value);
+        }
+    </script>
+</body>
+</html>
