@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline'">
     <title>JSON String Array</title>
 </head>
 <body>
-    <form>
-        <textarea id="input" rows="10" cols="50" placeholder='Enter a JSON array, e.g. ["key1=value1","key2=value2"]'></textarea><br>
-        <button type="button" onclick="processInput()">Process</button><br>
-        <textarea disabled="" id="output" rows="10" cols="50" placeholder="Processed output will appear here"></textarea><br>
-        <button type="button" onclick="clearOutput()">Copy</button>
+    <form id="app">
+        <textarea id="input" rows="10" cols="50" placeholder='Enter a JSON array, e.g. ["key1=value1","key2=value2"]' maxlength="100000"></textarea><br>
+        <button type="button" id="processBtn">Process</button><br>
+        <textarea disabled id="output" rows="10" cols="50" placeholder="Processed output will appear here"></textarea><br>
+        <button type="button" id="copyBtn">Copy</button>
     </form>
-    
+
     <p><small>All processing happens locally in your browser. No data is sent anywhere.</small></p>
-    <script>
-        function processInput() {
-            var raw = document.getElementById('input').value.trim();
-            var arr = JSON.parse(raw);
-            document.getElementById('output').value = arr.join(';');
-        }
-        function clearOutput() {
-            var out = document.getElementById('output');
-            navigator.clipboard.writeText(out.value);
-        }
-    </script>
+    <script src="app.js" defer></script>
 </body>
 </html>
