@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 2rem;
+}
+
+#valueDisplayContainer table {
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+#valueDisplayContainer td {
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+#valueDisplayContainer .copy-btn {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  font-size: 0.8em;
+}
