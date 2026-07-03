@@ -23,6 +23,12 @@ const searchInput = document.getElementById(
   "searchInput",
 ) as HTMLInputElement;
 
+function setUrlJson(json: string): void {
+  const b64 = btoa(unescape(encodeURIComponent(json)))
+    .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  history.replaceState(null, "", `#json=${b64}`);
+}
+
 function processAndRender(json: string): void {
   const separator = separatorInput.value;
   setTextareaContent(textareaOutput, joinJsonArray(json, ";"));
@@ -31,12 +37,24 @@ function processAndRender(json: string): void {
 
 onFileSelected(fileInput, (content) => {
   setTextareaContent(textareaInput, content);
+  setUrlJson(content);
   processAndRender(content);
 });
 
 processBtn.addEventListener("click", () => {
-  processAndRender(textareaInput.value);
+  const json = textareaInput.value;
+  setUrlJson(json);
+  processAndRender(json);
 });
+
+const hash = window.location.hash.slice(1);
+const b64 = new URLSearchParams(hash).get("json");
+if (b64) {
+  const padded = b64.replace(/-/g, "+").replace(/_/g, "/");
+  const json = decodeURIComponent(escape(atob(padded)));
+  setTextareaContent(textareaInput, json);
+  processAndRender(json);
+}
 
 separatorInput.addEventListener("input", () => {
   renderKeyValueTable(valueDisplayContainer, textareaInput.value, separatorInput.value);
