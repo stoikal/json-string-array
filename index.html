@@ -10,31 +10,62 @@
 
 <body>
   <main class="container">
-    <form id="app" autocomplete="off">
-      <input type="file" id="fileInput" accept=".txt"><br>
-      <textarea id="textareaInput" rows="10" cols="50" placeholder='Enter a JSON array, e.g. ["string1","string2"]'
-        maxlength="100000"></textarea><br>
-      <button type="button" id="processBtn">Process</button><br><br>
+    <header>
+      <h1>JSON String Array</h1>
+      <p class="subtitle">Split, process, and search JSON arrays</p>
+    </header>
 
-      <textarea disabled id="textareaOutput" rows="10" cols="50" placeholder="Processed output will appear here"></textarea><br>
-      <button type="button" id="copyBtn">Copy</button>
-    </form>
-    <div>
-      <label>
-        Separator
-        <input id="separatorInput" value="=">
-      </label>
-      <br>
-      <label>
-        Search
-        <input id="searchInput">
-      </label>
-      <br>
+    <div class="columns">
+      <form id="app" autocomplete="off" class="column-left">
+        <div class="input-group">
+          <label for="fileInput" class="file-label">
+            <span>Upload .txt file</span>
+            <input type="file" id="fileInput" accept=".txt">
+          </label>
+        </div>
 
-      <div id="valueDisplayContainer"></div>
+        <div class="input-group">
+          <label for="textareaInput">Input JSON</label>
+          <textarea id="textareaInput" rows="8"
+            placeholder='Enter a JSON array, e.g. ["string1","string2"]'
+            maxlength="100000"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="processBtn" class="btn btn-primary">Process</button>
+        </div>
+
+        <div class="input-group">
+          <label for="textareaOutput">Output</label>
+          <textarea disabled id="textareaOutput" rows="8"
+            placeholder="Processed output will appear here"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="copyBtn" class="btn btn-secondary">Copy Output</button>
+        </div>
+      </form>
+
+      <div class="column-right">
+        <div class="controls">
+          <div class="control-group">
+            <label for="separatorInput">Separator</label>
+            <input id="separatorInput" value="=">
+          </div>
+          <div class="control-group">
+            <label for="searchInput">Search</label>
+            <input id="searchInput" placeholder="Filter results...">
+          </div>
+        </div>
+
+        <div id="valueDisplayContainer"></div>
+      </div>
     </div>
+
+    <footer>
+      <small>All processing happens locally in your browser. No data is sent anywhere.</small>
+    </footer>
   </main>
-  <footer><small>All processing happens locally in your browser. No data is sent anywhere.</small></footer>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
