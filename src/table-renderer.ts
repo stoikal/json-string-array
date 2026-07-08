@@ -18,7 +18,10 @@ export function renderKeyValueTable(
       btn.className = "copy-btn";
       btn.textContent = "Copy";
       btn.addEventListener("click", () => {
-        navigator.clipboard.writeText(part);
+        navigator.clipboard.writeText(part).then(() => {
+          btn.textContent = "Copied!";
+          setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+        });
       });
       td.appendChild(btn);
 

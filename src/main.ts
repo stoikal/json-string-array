@@ -22,6 +22,7 @@ const valueDisplayContainer = document.getElementById(
 const searchInput = document.getElementById(
   "searchInput",
 ) as HTMLInputElement;
+const copyBtn = document.getElementById("copyBtn") as HTMLButtonElement;
 
 function setUrlJson(json: string): void {
   const b64 = btoa(unescape(encodeURIComponent(json)))
@@ -45,6 +46,13 @@ processBtn.addEventListener("click", () => {
   const json = textareaInput.value;
   setUrlJson(json);
   processAndRender(json);
+});
+
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(textareaOutput.value).then(() => {
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => { copyBtn.textContent = "Copy Output"; }, 1500);
+  });
 });
 
 const hash = window.location.hash.slice(1);
