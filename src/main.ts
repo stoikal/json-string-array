@@ -45,3 +45,7 @@ separatorInput.addEventListener("input", () => {
 searchInput.addEventListener("input", () => {
   filterTableRows(valueDisplayContainer, searchInput.value);
 });
+
+document.getElementById("copyBtn")!.addEventListener("click", () => {
+  navigator.clipboard.writeText(textareaOutput.value);
+});

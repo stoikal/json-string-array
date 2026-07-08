@@ -18,7 +18,21 @@ export function renderKeyValueTable(
       btn.className = "copy-btn";
       btn.textContent = "Copy";
       btn.addEventListener("click", () => {
-        navigator.clipboard.writeText(part);
+        navigator.clipboard.writeText(part).then(() => {
+          btn.textContent = "Copied!";
+          setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+        }).catch(() => {
+          const textarea = document.createElement("textarea");
+          textarea.value = part;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+          btn.textContent = "Copied!";
+          setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+        });
       });
       td.appendChild(btn);
 
