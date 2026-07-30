@@ -93,6 +93,7 @@ searchInput.addEventListener("input", () => {
 
 const copyBtn = document.getElementById("copyBtn")!;
 copyBtn.addEventListener("click", () => {
+  textareaOutput.select();
   navigator.clipboard.writeText(textareaOutput.value).then(() => {
     copyBtn.textContent = "Copied!";
     setTimeout(() => { copyBtn.textContent = "Copy Output"; }, 1000);

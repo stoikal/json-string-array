@@ -72,6 +72,11 @@ function render(): void {
       btn.className = "copy-btn";
       btn.textContent = "Copy";
       btn.addEventListener("click", () => {
+        const range = document.createRange();
+        range.selectNodeContents(td.firstChild!);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
         const val = row.parts[i] ?? "";
         navigator.clipboard.writeText(val).then(() => {
           btn.textContent = "Copied!";
