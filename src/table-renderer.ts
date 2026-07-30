@@ -13,6 +13,14 @@ function splitFirst(s: string, separator: string): string[] {
 function render(): void {
   if (!containerEl) return;
 
+  if (rowData.length === 0) {
+    const noResult = document.createElement("div");
+    noResult.className = "no-result";
+    noResult.textContent = "no result";
+    containerEl.replaceChildren(noResult);
+    return;
+  }
+
   const sorted = [...rowData];
   if (sortCol !== null && sortDir !== null) {
     sorted.sort((a, b) => {

@@ -21,6 +21,12 @@ const firstOnlyCheckbox = document.getElementById(
 const valueDisplayContainer = document.getElementById(
   "valueDisplayContainer",
 ) as HTMLDivElement;
+{
+  const el = document.createElement("div");
+  el.className = "no-result";
+  el.textContent = "no result";
+  valueDisplayContainer.appendChild(el);
+}
 const searchInput = document.getElementById(
   "searchInput",
 ) as HTMLInputElement;

@@ -276,6 +276,13 @@ textarea:disabled {
   cursor: pointer;
 }
 
+#valueDisplayContainer .no-result {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
 /* Value display / table */
 #valueDisplayContainer {
   background: var(--surface);
