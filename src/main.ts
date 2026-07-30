@@ -9,7 +9,6 @@ const fileInput = document.getElementById("fileInput") as HTMLInputElement;
 const textareaInput = document.getElementById(
   "textareaInput",
 ) as HTMLTextAreaElement;
-const processBtn = document.getElementById("processBtn") as HTMLButtonElement;
 const textareaOutput = document.getElementById(
   "textareaOutput",
 ) as HTMLTextAreaElement;
@@ -41,23 +40,39 @@ onFileSelected(fileInput, (content) => {
   processAndRender(content);
 });
 
-processBtn.addEventListener("click", () => {
-  processAndRender(textareaInput.value);
+let debounceTimer: number | undefined;
+textareaInput.addEventListener("input", () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = window.setTimeout(() => {
+    try {
+      processAndRender(textareaInput.value);
+    } catch {
+      // invalid JSON while typing — do nothing
+    }
+  }, 400);
 });
 
 function rerenderTable(): void {
-  renderKeyValueTable(
-    valueDisplayContainer,
-    textareaInput.value,
-    separatorInput.value,
-    firstOnlyCheckbox.checked,
-  );
+  try {
+    renderKeyValueTable(
+      valueDisplayContainer,
+      textareaInput.value,
+      separatorInput.value,
+      firstOnlyCheckbox.checked,
+    );
+  } catch {
+    // invalid JSON while typing — do nothing
+  }
 }
 
 separatorInput.addEventListener("input", rerenderTable);
 firstOnlyCheckbox.addEventListener("change", rerenderTable);
 outputSeparatorInput.addEventListener("input", () => {
-  setTextareaContent(textareaOutput, joinJsonArray(textareaInput.value, outputSeparatorInput.value));
+  try {
+    setTextareaContent(textareaOutput, joinJsonArray(textareaInput.value, outputSeparatorInput.value));
+  } catch {
+    // invalid JSON while typing — do nothing
+  }
 });
 
 searchInput.addEventListener("input", () => {
