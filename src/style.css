@@ -118,25 +118,27 @@ textarea:disabled {
 }
 
 .file-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-  font-size: 0.85rem;
+  padding: 1rem 1.5rem;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
   color: var(--text-secondary);
+  background: var(--surface);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
   text-transform: none;
   letter-spacing: normal;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .file-label:hover {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(0, 113, 227, 0.04);
+  background: rgba(0, 113, 227, 0.06);
 }
 
 .file-label input[type="file"] {
