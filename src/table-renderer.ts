@@ -20,7 +20,7 @@ export function renderKeyValueTable(
       btn.addEventListener("click", () => {
         navigator.clipboard.writeText(part).then(() => {
           btn.textContent = "Copied!";
-          setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+          setTimeout(() => { btn.textContent = "Copy"; }, 1000);
         }).catch(() => {
           const textarea = document.createElement("textarea");
           textarea.value = part;
@@ -31,7 +31,7 @@ export function renderKeyValueTable(
           document.execCommand("copy");
           document.body.removeChild(textarea);
           btn.textContent = "Copied!";
-          setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+          setTimeout(() => { btn.textContent = "Copy"; }, 1000);
         });
       });
       td.appendChild(btn);

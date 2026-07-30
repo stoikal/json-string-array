@@ -46,6 +46,10 @@ searchInput.addEventListener("input", () => {
   filterTableRows(valueDisplayContainer, searchInput.value);
 });
 
-document.getElementById("copyBtn")!.addEventListener("click", () => {
-  navigator.clipboard.writeText(textareaOutput.value);
+const copyBtn = document.getElementById("copyBtn")!;
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(textareaOutput.value).then(() => {
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => { copyBtn.textContent = "Copy Output"; }, 1000);
+  });
 });
