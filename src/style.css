@@ -88,20 +88,25 @@ label {
   letter-spacing: 0.04em;
 }
 
-textarea {
+textarea,
+.input-group input[type="text"] {
   width: 100%;
   padding: 0.65rem 0.8rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
   font-size: 0.85rem;
-  resize: vertical;
   background: var(--bg);
   color: var(--text);
   transition: border-color 0.15s;
 }
 
-textarea:focus {
+textarea {
+  resize: vertical;
+}
+
+textarea:focus,
+.input-group input[type="text"]:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.12);

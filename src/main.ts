@@ -25,11 +25,14 @@ const valueDisplayContainer = document.getElementById(
 const searchInput = document.getElementById(
   "searchInput",
 ) as HTMLInputElement;
+const outputSeparatorInput = document.getElementById(
+  "outputSeparatorInput",
+) as HTMLInputElement;
 
 function processAndRender(json: string): void {
   const separator = separatorInput.value;
   const firstOnly = firstOnlyCheckbox.checked;
-  setTextareaContent(textareaOutput, joinJsonArray(json, ";"));
+  setTextareaContent(textareaOutput, joinJsonArray(json, outputSeparatorInput.value));
   renderKeyValueTable(valueDisplayContainer, json, separator, firstOnly);
 }
 
@@ -53,6 +56,9 @@ function rerenderTable(): void {
 
 separatorInput.addEventListener("input", rerenderTable);
 firstOnlyCheckbox.addEventListener("change", rerenderTable);
+outputSeparatorInput.addEventListener("input", () => {
+  setTextareaContent(textareaOutput, joinJsonArray(textareaInput.value, outputSeparatorInput.value));
+});
 
 searchInput.addEventListener("input", () => {
   filterTableRows(valueDisplayContainer, searchInput.value);
