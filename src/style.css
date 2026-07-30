@@ -274,12 +274,28 @@ textarea:disabled {
   background: rgba(0, 113, 227, 0.03);
 }
 
+#valueDisplayContainer th,
 #valueDisplayContainer td {
   padding: 0.55rem 0.85rem;
   font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
   font-size: 0.82rem;
   border-bottom: 1px solid var(--border);
   word-break: break-all;
+}
+
+#valueDisplayContainer th {
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+}
+
+#valueDisplayContainer th:hover {
+  color: var(--primary);
 }
 
 #valueDisplayContainer tr:last-child td {
