@@ -16,6 +16,9 @@ const textareaOutput = document.getElementById(
 const separatorInput = document.getElementById(
   "separatorInput",
 ) as HTMLInputElement;
+const firstOnlyCheckbox = document.getElementById(
+  "firstOnlyCheckbox",
+) as HTMLInputElement;
 const valueDisplayContainer = document.getElementById(
   "valueDisplayContainer",
 ) as HTMLDivElement;
@@ -25,8 +28,9 @@ const searchInput = document.getElementById(
 
 function processAndRender(json: string): void {
   const separator = separatorInput.value;
+  const firstOnly = firstOnlyCheckbox.checked;
   setTextareaContent(textareaOutput, joinJsonArray(json, ";"));
-  renderKeyValueTable(valueDisplayContainer, json, separator);
+  renderKeyValueTable(valueDisplayContainer, json, separator, firstOnly);
 }
 
 onFileSelected(fileInput, (content) => {
@@ -38,9 +42,17 @@ processBtn.addEventListener("click", () => {
   processAndRender(textareaInput.value);
 });
 
-separatorInput.addEventListener("input", () => {
-  renderKeyValueTable(valueDisplayContainer, textareaInput.value, separatorInput.value);
-});
+function rerenderTable(): void {
+  renderKeyValueTable(
+    valueDisplayContainer,
+    textareaInput.value,
+    separatorInput.value,
+    firstOnlyCheckbox.checked,
+  );
+}
+
+separatorInput.addEventListener("input", rerenderTable);
+firstOnlyCheckbox.addEventListener("change", rerenderTable);
 
 searchInput.addEventListener("input", () => {
   filterTableRows(valueDisplayContainer, searchInput.value);

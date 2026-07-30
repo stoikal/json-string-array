@@ -50,11 +50,17 @@
         <div class="controls">
           <div class="control-group">
             <label for="separatorInput">Separator</label>
-            <input id="separatorInput" value="=" autocomplete="off">
+            <div class="separator-row">
+              <input type="text" id="separatorInput" value="=" autocomplete="off">
+              <label class="checkbox-label">
+                <input type="checkbox" id="firstOnlyCheckbox" checked>
+                First only
+              </label>
+            </div>
           </div>
           <div class="control-group">
             <label for="searchInput">Search</label>
-            <input id="searchInput" placeholder="Filter results..." autocomplete="off">
+            <input type="text" id="searchInput" placeholder="Filter results..." autocomplete="off">
           </div>
         </div>
 
@@ -63,7 +69,7 @@
     </div>
 
     <footer>
-      <small>All processing happens locally in your browser. No data is sent anywhere.</small>
+      <p>All processing happens locally in your browser. No data is sent anywhere.</p>
     </footer>
   </main>
   <script type="module" src="/src/main.ts"></script>

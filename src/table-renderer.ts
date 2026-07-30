@@ -1,13 +1,23 @@
+function splitFirst(s: string, separator: string): string[] {
+  const idx = s.indexOf(separator);
+  return idx === -1 ? [s] : [s.slice(0, idx), s.slice(idx + separator.length)];
+}
+
 export function renderKeyValueTable(
   container: HTMLElement,
   json: string,
   separator: string,
+  firstOnly: boolean,
 ): void {
   const arr: string[] = JSON.parse(json);
 
   const table = document.createElement("table");
   for (const item of arr) {
-    const parts = separator ? item.split(separator) : [item];
+    const parts = separator
+      ? firstOnly
+        ? splitFirst(item, separator)
+        : item.split(separator)
+      : [item];
     const tr = document.createElement("tr");
     for (const part of parts) {
       const td = document.createElement("td");
