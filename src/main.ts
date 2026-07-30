@@ -1,5 +1,5 @@
 import "./style.css";
-import { onFileSelected } from "./file-reader";
+import { onFileSelected, onFileDrop } from "./file-reader";
 import { setTextareaContent } from "./textarea-sync";
 import { joinJsonArray } from "./processor";
 import { renderKeyValueTable } from "./table-renderer";
@@ -36,6 +36,12 @@ function processAndRender(json: string): void {
 }
 
 onFileSelected(fileInput, (content) => {
+  setTextareaContent(textareaInput, content);
+  processAndRender(content);
+});
+
+const main = document.querySelector("main")!;
+onFileDrop(main, (content) => {
   setTextareaContent(textareaInput, content);
   processAndRender(content);
 });
