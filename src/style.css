@@ -399,7 +399,15 @@ footer {
   color: transparent;
   font-weight: 800;
   letter-spacing: 0.02em;
-  animation: rainbow-slide 6s linear infinite;
+  animation: rainbow-slide 6s linear infinite, h1-tada 3s ease-in-out infinite;
+}
+
+:root[data-theme="cute"] h1::before {
+  content: "✨ ";
+}
+
+:root[data-theme="cute"] h1::after {
+  content: " ✨";
 }
 
 :root[data-theme="cute"] .subtitle {
@@ -524,6 +532,97 @@ body.theme-flash-cute {
   animation: cute-screen-flash 0.7s ease-out;
 }
 
+/* Comedic scrolling marquee (pastel only) */
+.pastel-marquee {
+  display: none;
+}
+
+:root[data-theme="cute"] .pastel-marquee {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  overflow: hidden;
+  padding: 0.4rem 0;
+  background: linear-gradient(90deg, #ffd9ec, #f9cffb, #ffd0e3, #d0ecff, #ffd9ec);
+  border-bottom: 2px solid #ffc4d9;
+  box-shadow: 0 2px 14px rgba(255, 79, 163, 0.35);
+  pointer-events: none;
+}
+
+.pastel-marquee-inner {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-scroll 26s linear infinite;
+}
+
+.pastel-marquee-inner span {
+  padding-right: 3rem;
+  font-family: "Baloo 2", "Comic Sans MS", "Comic Neue", sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #c24d8a;
+}
+
+/* Sticker badges (pastel only) */
+.sticker {
+  display: none;
+}
+
+:root[data-theme="cute"] .sticker {
+  --angle: -6deg;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  padding: 0.25rem 0.65rem;
+  background: #fff;
+  border: 2px solid #ff9ed2;
+  border-radius: 12px;
+  font-family: "Baloo 2", "Comic Sans MS", "Comic Neue", sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #c24d8a;
+  box-shadow: 0 3px 0 #ffc4d9;
+  transform: rotate(var(--angle));
+  animation: sticker-wobble 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+:root[data-theme="cute"] .sticker-1 { --angle: 6deg; top: 4.5rem; right: 1rem; }
+:root[data-theme="cute"] .sticker-2 { --angle: -8deg; top: 19rem; left: -0.5rem; animation-delay: 0.5s; }
+:root[data-theme="cute"] .sticker-3 { --angle: 4deg; top: 14rem; right: -0.5rem; animation-delay: 1s; }
+:root[data-theme="cute"] .sticker-4 { --angle: -5deg; top: 8.5rem; left: 4%; animation-delay: 1.4s; }
+:root[data-theme="cute"] .sticker-5 { --angle: 7deg; bottom: 3.5rem; left: 6%; animation-delay: 0.8s; }
+
+/* Glitter-bomb burst on theme switch */
+.burst-emoji {
+  position: fixed;
+  pointer-events: none;
+  z-index: 400;
+  animation: burst-pop 1s ease-out forwards;
+}
+
+/* Goofy button dance */
+:root[data-theme="cute"] .btn-primary:hover {
+  animation: btn-dance 0.5s ease-in-out infinite;
+}
+
+:root[data-theme="cute"] .file-label:hover {
+  animation: btn-dance 0.5s ease-in-out infinite;
+}
+
+/* Passive-aggressive checkbox decoration */
+:root[data-theme="cute"] .checkbox-label::after {
+  content: " 🥺";
+}
+
+:root[data-theme="cute"] body.drag-over::after {
+  content: "Drop .txt file anywhere, gorgeous ✨";
+}
+
 /* Floating decorations */
 .floating-decor {
   display: none;
@@ -635,6 +734,38 @@ body.theme-flash-cute {
 @keyframes cute-screen-flash {
   0% { box-shadow: inset 0 0 140px rgba(255, 79, 163, 0.55); }
   100% { box-shadow: inset 0 0 0 rgba(255, 79, 163, 0); }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes sticker-wobble {
+  0%, 100% { transform: rotate(var(--angle)) translateY(0); }
+  50% { transform: rotate(calc(var(--angle) + 4deg)) translateY(-5px); }
+}
+
+@keyframes burst-pop {
+  0% { transform: scale(0.2) translateY(0); opacity: 1; }
+  60% { opacity: 1; }
+  100% { transform: scale(1.5) translateY(var(--drift, -120px)); opacity: 0; }
+}
+
+@keyframes btn-dance {
+  0%, 100% { transform: rotate(-3deg) scale(1.05); }
+  25% { transform: rotate(3deg) scale(1.06); }
+  50% { transform: rotate(-3deg) scale(1.05); }
+  75% { transform: rotate(3deg) scale(1.06); }
+}
+
+@keyframes h1-tada {
+  0%, 86%, 100% { transform: rotate(0deg) scale(1); }
+  88% { transform: rotate(-3deg) scale(1.04); }
+  90% { transform: rotate(3deg) scale(1.06); }
+  92% { transform: rotate(-3deg) scale(1.05); }
+  94% { transform: rotate(3deg) scale(1.06); }
+  96% { transform: rotate(-1deg) scale(1.02); }
 }
 
 /* Large screens: side-by-side columns */
