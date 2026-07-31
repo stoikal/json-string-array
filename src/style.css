@@ -363,6 +363,280 @@ footer {
   font-size: 0.78rem;
 }
 
+/* =============================================
+   Theme: hyper cute girly aesthetic (Alt+T)
+   ============================================= */
+:root[data-theme="cute"] {
+  --bg: linear-gradient(135deg, #ffd9ec, #f9cffb 50%, #ffd0e3);
+  --surface: #fffafd;
+  --border: #ffc4d9;
+  --text: #6d3b5e;
+  --text-secondary: #d48aa8;
+  --primary: #ff4fa3;
+  --primary-hover: #ff6fb2;
+  --radius: 24px;
+  --shadow: 0 6px 24px rgba(255, 79, 163, 0.35);
+}
+
+:root[data-theme="cute"] body {
+  font-family: "Baloo 2", "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
+  background: linear-gradient(120deg, #ffd9ec, #f9d0ff, #ffd0e3, #d0ecff, #ffe8f3, #f9d0ff);
+  background-size: 400% 400%;
+  animation: bg-shift 18s ease infinite;
+  transition: color 0.4s ease;
+}
+
+:root[data-theme="cute"] .container {
+  position: relative;
+  z-index: 1;
+}
+
+:root[data-theme="cute"] h1 {
+  background: linear-gradient(90deg, #ff4fa3, #c04fff, #4fb8ff, #ffd94f, #ff4fa3);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  animation: rainbow-slide 6s linear infinite;
+}
+
+:root[data-theme="cute"] .subtitle {
+  color: var(--text-secondary);
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+:root[data-theme="cute"] #app,
+:root[data-theme="cute"] .control-group,
+:root[data-theme="cute"] #valueDisplayContainer {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, #ff9ed2, #ffd94f, #9fe8ff, #ff9ed2) border-box;
+  animation: border-spin 8s linear infinite;
+}
+
+:root[data-theme="cute"] label {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="cute"] textarea,
+:root[data-theme="cute"] .input-group input:not([type="file"]),
+:root[data-theme="cute"] .control-group input:not([type="checkbox"]) {
+  font-family: inherit;
+  border-radius: 14px;
+  border-color: var(--border);
+  background: #fff;
+}
+
+:root[data-theme="cute"] textarea:focus,
+:root[data-theme="cute"] .input-group input:not([type="file"]):focus,
+:root[data-theme="cute"] .control-group input:not([type="checkbox"]):focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 79, 163, 0.25);
+}
+
+:root[data-theme="cute"] .btn {
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+:root[data-theme="cute"] .btn-primary {
+  background: linear-gradient(135deg, #ff4fa3, #ff8fd0);
+  color: #fff;
+  box-shadow: 0 4px 0 #e11d86, 0 8px 20px rgba(255, 79, 163, 0.45);
+}
+
+:root[data-theme="cute"] .btn-primary:hover {
+  transform: translateY(-2px) rotate(-2deg) scale(1.05);
+  box-shadow: 0 6px 0 #e11d86, 0 12px 24px rgba(255, 79, 163, 0.55);
+}
+
+:root[data-theme="cute"] .btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #e11d86, 0 4px 10px rgba(255, 79, 163, 0.4);
+}
+
+:root[data-theme="cute"] .btn-secondary {
+  background: #fff;
+}
+
+:root[data-theme="cute"] .checkbox-label input[type="checkbox"],
+:root[data-theme="cute"] input[type="checkbox"] {
+  accent-color: #ff4fa3;
+}
+
+:root[data-theme="cute"] .file-label {
+  background: #fff;
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+}
+
+:root[data-theme="cute"] .file-label:hover {
+  background: #ffe9f4;
+  border-color: var(--primary);
+}
+
+:root[data-theme="cute"] #valueDisplayContainer th,
+:root[data-theme="cute"] #valueDisplayContainer td {
+  font-family: inherit;
+}
+
+:root[data-theme="cute"] #valueDisplayContainer th {
+  background: linear-gradient(180deg, #ffe3f1, #ffedf6);
+  color: var(--text);
+}
+
+:root[data-theme="cute"] #valueDisplayContainer tr:nth-child(even) {
+  background: #fff0f7;
+}
+
+:root[data-theme="cute"] #valueDisplayContainer tr:hover {
+  background: #ffe3f1;
+}
+
+:root[data-theme="cute"] #valueDisplayContainer th:hover,
+:root[data-theme="cute"] .copy-btn:hover {
+  color: var(--primary);
+}
+
+:root[data-theme="cute"] .copy-btn {
+  background: #fff;
+  border-color: var(--border);
+}
+
+:root[data-theme="cute"] #valueDisplayContainer .no-result {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="cute"] body.drag-over::after {
+  color: var(--primary);
+  background: rgba(255, 79, 163, 0.12);
+  border-color: var(--primary);
+  border-radius: 24px;
+}
+
+/* Screen flash on theme switch */
+body.theme-flash-cute {
+  animation: cute-screen-flash 0.7s ease-out;
+}
+
+/* Floating decorations */
+.floating-decor {
+  display: none;
+}
+
+:root[data-theme="cute"] .floating-decor {
+  display: block;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-decor span {
+  position: absolute;
+  bottom: -4rem;
+  opacity: 0;
+  animation: float-up linear infinite;
+  filter: drop-shadow(0 2px 4px rgba(255, 79, 163, 0.3));
+}
+
+.floating-decor span:nth-child(1) { left: 5%; font-size: 2.2rem; animation-duration: 14s; animation-delay: 0s; }
+.floating-decor span:nth-child(2) { left: 12%; font-size: 1.5rem; animation-duration: 18s; animation-delay: 2s; }
+.floating-decor span:nth-child(3) { left: 22%; font-size: 2.6rem; animation-duration: 16s; animation-delay: 1s; }
+.floating-decor span:nth-child(4) { left: 33%; font-size: 1.4rem; animation-duration: 20s; animation-delay: 4s; }
+.floating-decor span:nth-child(5) { left: 41%; font-size: 2rem; animation-duration: 15s; animation-delay: 3s; }
+.floating-decor span:nth-child(6) { left: 50%; font-size: 1.7rem; animation-duration: 19s; animation-delay: 5s; }
+.floating-decor span:nth-child(7) { left: 58%; font-size: 2.4rem; animation-duration: 17s; animation-delay: 2.5s; }
+.floating-decor span:nth-child(8) { left: 66%; font-size: 1.5rem; animation-duration: 21s; animation-delay: 6s; }
+.floating-decor span:nth-child(9) { left: 74%; font-size: 2.1rem; animation-duration: 14s; animation-delay: 0.5s; }
+.floating-decor span:nth-child(10) { left: 82%; font-size: 1.6rem; animation-duration: 18s; animation-delay: 3.5s; }
+.floating-decor span:nth-child(11) { left: 90%; font-size: 2.3rem; animation-duration: 16s; animation-delay: 5.5s; }
+.floating-decor span:nth-child(12) { left: 96%; font-size: 1.8rem; animation-duration: 22s; animation-delay: 1.5s; }
+
+/* Sparkle cursor trail */
+.cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 300;
+  font-size: 1.1rem;
+  animation: sparkle-pop 0.6s ease-out forwards;
+}
+
+/* Theme toast */
+.theme-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(1rem);
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 200;
+}
+
+:root[data-theme="cute"] .theme-toast {
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, #ff9ed2, #ffd94f, #9fe8ff, #ff9ed2) border-box;
+  font-weight: 700;
+}
+
+.theme-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Keyframes */
+@keyframes bg-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes rainbow-slide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes border-spin {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.85; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes sparkle-pop {
+  0% { transform: scale(0.4) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) rotate(45deg); opacity: 0; }
+}
+
+@keyframes cute-screen-flash {
+  0% { box-shadow: inset 0 0 140px rgba(255, 79, 163, 0.55); }
+  100% { box-shadow: inset 0 0 0 rgba(255, 79, 163, 0); }
+}
+
 /* Large screens: side-by-side columns */
 @media (min-width: 900px) {
   .container {

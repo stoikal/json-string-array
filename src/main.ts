@@ -1,9 +1,12 @@
 import "./style.css";
+import { initTheme } from "./theme";
 import { onFileSelected, onFileDrop } from "./file-reader";
 import { setTextareaContent } from "./textarea-sync";
 import { joinJsonArray } from "./processor";
 import { renderKeyValueTable } from "./table-renderer";
 import { filterTableRows } from "./search-filter";
+
+initTheme();
 
 const fileInput = document.getElementById("fileInput") as HTMLInputElement;
 const textareaInput = document.getElementById(
